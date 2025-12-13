@@ -16,3 +16,18 @@ describe("Auth API - Register", () => {
     expect(response.body).toHaveProperty("token");
   });
 });
+
+
+
+
+it("should fail if email or password is missing", async () => {
+  const res = await request(app)
+    .post("/api/auth/register")
+    .send({
+      email: "",
+      password: ""
+    });
+
+  expect(res.statusCode).toBe(400);
+  expect(res.body.message).toBe("Email and password are required");
+});
