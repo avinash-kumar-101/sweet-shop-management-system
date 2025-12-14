@@ -112,6 +112,18 @@ Example:
 
 ---
 
+### Demo Login Credentials
+
+For testing purposes, you can use the following demo account:
+
+- Email:      test1@gmail.com  
+- Password:   password123
+
+> Note: These credentials are for demo/testing only.
+
+
+
+
 🤖 My AI Usage
 
 AI tools were used responsibly during development.
