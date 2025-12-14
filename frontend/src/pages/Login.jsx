@@ -15,10 +15,7 @@ function Login() {
         password,
       });
 
-      // 🔐 save token
       localStorage.setItem("token", res.data.token);
-
-      alert("Login successful");
       navigate("/dashboard");
     } catch (err) {
       alert("Invalid credentials");
@@ -26,27 +23,69 @@ function Login() {
   };
 
   return (
-    <div style={{ padding: 40 }}>
-      <h2>Login</h2>
+    <div style={styles.page}>
+      <div style={styles.card}>
+        <h2 style={styles.title}>🍬 Sweet Shop Login</h2>
 
-      <input
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <br /><br />
+        <input
+          style={styles.input}
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
 
-      <input
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <br /><br />
+        <input
+          style={styles.input}
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
 
-      <button onClick={handleLogin}>Login</button>
+        <button style={styles.button} onClick={handleLogin}>
+          Login
+        </button>
+      </div>
     </div>
   );
 }
+
+const styles = {
+  page: {
+    height: "100vh",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    background: "linear-gradient(135deg,#667eea,#764ba2)",
+  },
+  card: {
+    width: 320,
+    padding: 30,
+    background: "#fff",
+    borderRadius: 10,
+    boxShadow: "0 10px 25px rgba(0,0,0,0.2)",
+    textAlign: "center",
+  },
+  title: {
+    marginBottom: 20,
+  },
+  input: {
+    width: "100%",
+    padding: 10,
+    marginBottom: 15,
+    borderRadius: 5,
+    border: "1px solid #ccc",
+  },
+  button: {
+    width: "100%",
+    padding: 10,
+    borderRadius: 5,
+    border: "none",
+    background: "#667eea",
+    color: "#fff",
+    fontWeight: "bold",
+    cursor: "pointer",
+  },
+};
 
 export default Login;
