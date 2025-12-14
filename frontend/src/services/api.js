@@ -1,26 +1,17 @@
-// import axios from "axios";
 
-// const api = axios.create({
-//   baseURL: "http://localhost:3000/api", // backend ka URL
-// });
+import axios from "axios";
 
-// export default api;
+const api = axios.create({
+  baseURL: "http://localhost:3000/api", // backend URL
+});
 
+// 🔐 token automatically attach
+api.interceptors.request.use((config) => {
+  const token = localStorage.getItem("token");
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+});
 
-
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Login from "./pages/Login";
-import Dashboard from "./pages/Dashboard";
-
-function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-      </Routes>
-    </BrowserRouter>
-  );
-}
-
-export default App;
+export default api;
